@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import '../../presentation/widgets/add_button_widget.dart';
-
+import '../../domain/entities/product.dart';
 class MyCatalog extends StatelessWidget {
   const MyCatalog({super.key});
 
+  static final List<Product> _products = [
+      Product(id: '1', name: 'Nasi Uduk', price: '7000'),
+      Product(id: '2', name: 'Lontong Sayur', price: '7000'),
+      Product(id: '3', name: 'Bakwan Sayur', price: '1000')
+    ];
   @override
   Widget build(BuildContext context) {
-    final products = ['Nasi Uduk', 'Lontong Sayur', 'Bakwan Sayur', 
-    'Tempe Goreng Tepung'];
     return Scaffold(
       appBar: AppBar(
         title: const Text('Menu'),
@@ -19,11 +22,12 @@ class MyCatalog extends StatelessWidget {
         ]
       ),
       body: ListView.builder(
-        itemCount: products.length,
+        itemCount: _products.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text(products[index]),
-            trailing: AddButton(item: products[index])
+            title: Text(_products[index].name),
+            subtitle: Text('Rp ${_products[index].price}'),
+            trailing: AddButton(item: _products[index])
           );
         }
       )
