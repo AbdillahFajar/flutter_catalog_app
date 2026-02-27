@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'features/cart/data/models/product_model.dart';
-import 'features/cart/presentation/pages/catalog_page.dart';
-import 'features/cart/presentation/pages/cart_page.dart';
+// import 'features/cart/presentation/pages/catalog_page.dart';
+// import 'features/cart/presentation/pages/cart_page.dart';
+import './core/routes/app_router.dart';
 void main() {
   runApp(
     //Membungkus aplikasi dengan ChangeNotifierProvider agar State bisa diakses di mana saja
@@ -21,11 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Nasi Uduk Nenek Ezra',
-      initialRoute: '/',
-      routes: {
-      '/': (context) => const MyCatalog(),
-      '/cart': (context) => const MyCart()
-      }
+      routes: AppRouter.routes,
     );
   }
 }
