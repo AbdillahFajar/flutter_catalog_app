@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../cart/data/models/product_model.dart';
+// import '../../../cart/data/models/product_model.dart';
+import '../../presentation/providers/cart_provider.dart';
 
 class MyCart extends StatelessWidget {
   const MyCart({super.key});
@@ -8,7 +9,7 @@ class MyCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //context.watch, untuk membuat widget ini re-build tiap kali CartModel berubah
-    var cart = context.watch<CartModel>();
+    var cart = context.watch<CartProvider>();
 
     return Scaffold(
       appBar: AppBar(
@@ -22,7 +23,8 @@ class MyCart extends StatelessWidget {
               itemBuilder: (context, index) =>
                 ListTile(
                   leading: const Icon(Icons.fastfood),
-                  title: Text(cart.items[index])
+                  title: Text(cart.items[index].name),
+                  subtitle: Text('Rp ${cart.items[index].price}'),
               ),
             )
           ),

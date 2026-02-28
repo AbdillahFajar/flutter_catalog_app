@@ -27,7 +27,7 @@ class MyCatalog extends StatelessWidget {
           return ListTile(
             title: Text(_products[index].name),
             subtitle: Text('Rp ${_products[index].price}'),
-            trailing: AddButton(item: _products[index])
+            trailing: AddButton(product: _products[index])
           );
         }
       )
